@@ -126,9 +126,12 @@ export function WishButton({ id, className }: { id: string; className?: string }
 export function ProductCard({ p, wide }: { p: Product; wide?: boolean }) {
   const { go } = useFlo();
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       onClick={() => go("product", { id: p.id })}
-      className={cn("text-left", wide ? "w-[170px] shrink-0" : "w-full")}
+      onKeyDown={(e) => e.key === "Enter" && go("product", { id: p.id })}
+      className={cn("cursor-pointer text-left", wide ? "w-[170px] shrink-0" : "w-full")}
     >
       <div className="relative overflow-hidden rounded-3xl bg-surface">
         <img
@@ -154,7 +157,7 @@ export function ProductCard({ p, wide }: { p: Product; wide?: boolean }) {
           )}
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
