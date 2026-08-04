@@ -31,7 +31,12 @@ export type ScreenName =
   | "notifications"
   | "settings";
 
-export type Params = { id?: string; category?: string; query?: string; title?: string };
+export type Params = {
+  id?: string | undefined;
+  category?: string | undefined;
+  query?: string | undefined;
+  title?: string | undefined;
+};
 
 export type CartLine = {
   key: string;
@@ -143,11 +148,11 @@ export function useFlo() {
 }
 
 export function filterProducts(opts: {
-  category?: string;
-  query?: string;
-  tag?: "new" | "best" | "sale" | "featured";
-  sort?: string;
-  max?: number;
+  category?: string | undefined;
+  query?: string | undefined;
+  tag?: ("new" | "best" | "sale" | "featured") | undefined;
+  sort?: string | undefined;
+  max?: number | undefined;
 }) {
   let list = [...products];
   if (opts.category && opts.category !== "All")
