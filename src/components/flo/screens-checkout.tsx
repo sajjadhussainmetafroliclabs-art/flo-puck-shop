@@ -43,7 +43,7 @@ export function CartScreen() {
   const shipping = subtotal > 100 ? 0 : 9.95;
   return (
     <div className="relative h-full">
-      <Screen>
+      <Screen className="[&>div]:pb-52">
         <Header title={`Cart (${cart.length})`} />
         <div className="space-y-3 px-5">
           {cart.map((l) => (
@@ -95,7 +95,7 @@ export function CartScreen() {
           </div>
         </div>
       </Screen>
-      <div className="absolute inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 px-5 pb-6 pt-3.5 backdrop-blur-xl">
+      <div className="absolute inset-x-0 bottom-[84px] z-30 border-t border-border bg-background/95 px-5 pb-4 pt-3.5 backdrop-blur-xl">
         <Btn full onClick={() => go("address")}>
           Checkout · {money(subtotal + shipping + subtotal * 0.07)}
         </Btn>
