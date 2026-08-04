@@ -159,7 +159,56 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: var(--color-surface);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility screen-fade {
+  animation: floFade 0.28s ease both;
+}
+
+@keyframes floFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes floRise {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility sheet-rise {
+  animation: floRise 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
