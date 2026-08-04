@@ -102,7 +102,7 @@ export function FloProvider({ children }: { children: ReactNode }) {
     setModal({ type: "added", line });
   }, []);
 
-  const current = stack[stack.length - 1];
+  const current = stack[stack.length - 1]!;
   const subtotal = cart.reduce((s, l) => s + l.product.price * l.qty, 0);
   const count = cart.reduce((s, l) => s + l.qty, 0);
 
@@ -157,7 +157,7 @@ export function filterProducts(opts: {
       (p.name + p.brand + p.category).toLowerCase().includes(opts.query!.toLowerCase()),
     );
   if (opts.tag) list = list.filter((p) => p.tags.includes(opts.tag!));
-  if (opts.max) list = list.filter((p) => p.price <= opts.max);
+  if (opts.max) list = list.filter((p) => p.price <= opts.max!);
   if (opts.sort === "Price: Low to High") list.sort((a, b) => a.price - b.price);
   if (opts.sort === "Price: High to Low") list.sort((a, b) => b.price - a.price);
   if (opts.sort === "Top Rated") list.sort((a, b) => b.rating - a.rating);

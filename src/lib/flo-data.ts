@@ -190,5 +190,5 @@ export const reviewList = [
   { name: "Diego M.", rating: 4, date: "3 weeks ago", text: "Great feel, sizing runs a touch long but the fit is dialed." },
 ];
 
-export const byId = (id: string) => products.find((p) => p.id === id) ?? products[0];
+export const byId = (id: string) => products.find((p) => p.id === id) ?? products[0]!;
 export const money = (n: number) => `$${n.toFixed(2)}`;
