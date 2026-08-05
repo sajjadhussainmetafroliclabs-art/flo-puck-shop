@@ -147,7 +147,7 @@ export function FloProvider({
       modal,
       setModal,
     }),
-    [current, go, back, tab, cart, addToCart, wishlist, subtotal, count, filters, modal],
+    [current, frozen, go, back, tab, cart, addToCart, wishlist, subtotal, count, filters, modal],
   );
 
   return <FloContext.Provider value={value}>{children}</FloContext.Provider>;
