@@ -49,6 +49,7 @@ export type CartLine = {
 type Ctx = {
   screen: ScreenName;
   params: Params;
+  frozen: boolean;
   go: (s: ScreenName, p?: Params) => void;
   back: () => void;
   tab: "home" | "shop" | "cart" | "wishlist" | "profile";
@@ -70,9 +71,19 @@ type Ctx = {
 
 const FloContext = createContext<Ctx | null>(null);
 
-export function FloProvider({ children }: { children: ReactNode }) {
+export function FloProvider({
+  children,
+  initialScreen = "splash",
+  initialParams = {},
+  frozen = false,
+}: {
+  children: ReactNode;
+  initialScreen?: ScreenName;
+  initialParams?: Params;
+  frozen?: boolean;
+}) {
   const [stack, setStack] = useState<{ screen: ScreenName; params: Params }[]>([
-    { screen: "splash", params: {} },
+    { screen: initialScreen, params: initialParams },
   ]);
   const [tab, setTab] = useState<Ctx["tab"]>("home");
   const [cart, setCart] = useState<CartLine[]>([
@@ -115,6 +126,7 @@ export function FloProvider({ children }: { children: ReactNode }) {
     () => ({
       screen: current.screen,
       params: current.params,
+      frozen,
       go,
       back,
       tab,
@@ -135,7 +147,7 @@ export function FloProvider({ children }: { children: ReactNode }) {
       modal,
       setModal,
     }),
-    [current, go, back, tab, cart, addToCart, wishlist, subtotal, count, filters, modal],
+    [current, frozen, go, back, tab, cart, addToCart, wishlist, subtotal, count, filters, modal],
   );
 
   return <FloContext.Provider value={value}>{children}</FloContext.Provider>;

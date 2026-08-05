@@ -1,4 +1,4 @@
-import { FloProvider, useFlo } from "@/lib/flo-app";
+import { FloProvider, useFlo, type Params, type ScreenName } from "@/lib/flo-app";
 import { BottomNav } from "./ui";
 import { LoginScreen, SignupScreen, SplashScreen, WelcomeScreen } from "./screens-onboarding";
 import {
@@ -88,9 +88,21 @@ function Router() {
   );
 }
 
-export function FloApp() {
+export function FloApp({
+  initialScreen,
+  initialParams,
+  frozen,
+}: {
+  initialScreen?: ScreenName;
+  initialParams?: Params;
+  frozen?: boolean;
+} = {}) {
   return (
-    <FloProvider>
+    <FloProvider
+      {...(initialScreen ? { initialScreen } : {})}
+      {...(initialParams ? { initialParams } : {})}
+      {...(frozen ? { frozen } : {})}
+    >
       <div className="relative h-full w-full overflow-hidden bg-background">
         <Router />
       </div>

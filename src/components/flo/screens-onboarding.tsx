@@ -6,16 +6,20 @@ import { useFlo } from "@/lib/flo-app";
 import { Btn, Field, Header, Screen } from "./ui";
 
 export function SplashScreen() {
-  const { go } = useFlo();
+  const { go, frozen } = useFlo();
   const [p, setP] = useState(6);
   useEffect(() => {
+    if (frozen) {
+      setP(64);
+      return;
+    }
     const t = setInterval(() => setP((v) => Math.min(100, v + 7)), 90);
     const j = setTimeout(() => go("welcome"), 1700);
     return () => {
       clearInterval(t);
       clearTimeout(j);
     };
-  }, [go]);
+  }, [go, frozen]);
   return (
     <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-ink px-10">
       <img src={logo.url} alt="Flo Hockey" className="h-40 w-40 rounded-full object-cover" />
