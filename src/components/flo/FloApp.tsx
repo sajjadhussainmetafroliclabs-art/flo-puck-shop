@@ -1,4 +1,4 @@
-import { FloProvider, useFlo } from "@/lib/flo-app";
+import { FloProvider, useFlo, type Params, type ScreenName } from "@/lib/flo-app";
 import { BottomNav } from "./ui";
 import { LoginScreen, SignupScreen, SplashScreen, WelcomeScreen } from "./screens-onboarding";
 import {
