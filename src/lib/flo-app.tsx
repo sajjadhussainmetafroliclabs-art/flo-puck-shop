@@ -70,9 +70,17 @@ type Ctx = {
 
 const FloContext = createContext<Ctx | null>(null);
 
-export function FloProvider({ children }: { children: ReactNode }) {
+export function FloProvider({
+  children,
+  initialScreen = "splash",
+  initialParams = {},
+}: {
+  children: ReactNode;
+  initialScreen?: ScreenName;
+  initialParams?: Params;
+}) {
   const [stack, setStack] = useState<{ screen: ScreenName; params: Params }[]>([
-    { screen: "splash", params: {} },
+    { screen: initialScreen, params: initialParams },
   ]);
   const [tab, setTab] = useState<Ctx["tab"]>("home");
   const [cart, setCart] = useState<CartLine[]>([
