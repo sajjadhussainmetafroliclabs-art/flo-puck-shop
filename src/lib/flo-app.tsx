@@ -49,6 +49,7 @@ export type CartLine = {
 type Ctx = {
   screen: ScreenName;
   params: Params;
+  frozen: boolean;
   go: (s: ScreenName, p?: Params) => void;
   back: () => void;
   tab: "home" | "shop" | "cart" | "wishlist" | "profile";
