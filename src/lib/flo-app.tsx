@@ -126,6 +126,7 @@ export function FloProvider({
     () => ({
       screen: current.screen,
       params: current.params,
+      frozen,
       go,
       back,
       tab,
