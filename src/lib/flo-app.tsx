@@ -75,10 +75,12 @@ export function FloProvider({
   children,
   initialScreen = "splash",
   initialParams = {},
+  frozen = false,
 }: {
   children: ReactNode;
   initialScreen?: ScreenName;
   initialParams?: Params;
+  frozen?: boolean;
 }) {
   const [stack, setStack] = useState<{ screen: ScreenName; params: Params }[]>([
     { screen: initialScreen, params: initialParams },
