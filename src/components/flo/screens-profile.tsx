@@ -1,3 +1,6 @@
+import { Moon, Sun, Pencil, Camera, User } from "lucide-react";
+import { useTheme } from "@/lib/use-theme";
+import { Field } from "./ui";
 import {
   Bell,
   ChevronRight,
@@ -22,6 +25,7 @@ const orders = [
 export function ProfileScreen() {
   const { go, wishlist, count } = useFlo();
   const rows: { icon: typeof Package; label: string; sub: string; screen: ScreenName }[] = [
+    { icon: User, label: "Edit Profile", sub: "Name, email & phone", screen: "editProfile" },
     { icon: Package, label: "My Orders", sub: `${orders.length} orders`, screen: "orders" },
     { icon: Heart, label: "Wishlist", sub: `${wishlist.length} saved`, screen: "wishlist" },
     { icon: MapPin, label: "Addresses", sub: "2 saved", screen: "addresses" },
@@ -41,9 +45,13 @@ export function ProfileScreen() {
             <p className="font-display text-base font-semibold text-background">Mason Reyes</p>
             <p className="text-xs text-background/60">mason@flohockey.com</p>
           </div>
-          <span className="rounded-full bg-brand/20 px-3 py-1 font-display text-[10px] font-semibold text-brand">
-            FLO+ MEMBER
-          </span>
+          <button
+            onClick={() => go("editProfile")}
+            aria-label="Edit profile"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-brand/20 text-brand"
+          >
+            <Pencil className="h-4 w-4" />
+          </button>
         </div>
 
         <div className="mt-4 grid grid-cols-3 gap-3">
@@ -232,10 +240,33 @@ export function NotificationsScreen() {
 
 export function SettingsScreen() {
   const toggles = ["Push notifications", "Email offers", "Order updates by SMS", "Face ID login"];
+  const { dark, toggle } = useTheme();
   return (
     <Screen>
       <Header title="Settings" />
       <div className="px-5">
+        <div className="mb-4 rounded-3xl border border-border p-4">
+          <p className="font-display text-sm font-semibold">Appearance</p>
+          <p className="text-xs text-ink-soft">Choose how Flo Hockey looks on your device</p>
+          <div className="mt-3 grid grid-cols-2 gap-2 rounded-2xl bg-surface p-1">
+            <button
+              onClick={() => dark && toggle()}
+              className={`flex items-center justify-center gap-2 rounded-xl py-2.5 font-display text-[13px] font-semibold ${
+                !dark ? "bg-background text-ink shadow-soft" : "text-ink-soft"
+              }`}
+            >
+              <Sun className="h-4 w-4" /> Light
+            </button>
+            <button
+              onClick={() => !dark && toggle()}
+              className={`flex items-center justify-center gap-2 rounded-xl py-2.5 font-display text-[13px] font-semibold ${
+                dark ? "bg-background text-ink shadow-soft" : "text-ink-soft"
+              }`}
+            >
+              <Moon className="h-4 w-4" /> Dark
+            </button>
+          </div>
+        </div>
         <div className="divide-y divide-border overflow-hidden rounded-3xl border border-border">
           {toggles.map((t, i) => (
             <label key={t} className="flex cursor-pointer items-center justify-between p-4">
@@ -254,6 +285,60 @@ export function SettingsScreen() {
           ))}
         </div>
         <p className="mt-6 text-center text-xs text-ink-soft">Flo Hockey · Version 1.0.0</p>
+      </div>
+    </Screen>
+  );
+}
+
+export function EditProfileScreen() {
+  const { back } = useFlo();
+  return (
+    <Screen>
+      <Header title="Edit Profile" />
+      <div className="px-5">
+        <div className="flex flex-col items-center">
+          <div className="relative">
+            <span className="flex h-24 w-24 items-center justify-center rounded-full bg-ink font-display text-2xl font-extrabold text-brand">
+              MR
+            </span>
+            <button
+              aria-label="Change photo"
+              className="absolute -bottom-1 -right-1 flex h-9 w-9 items-center justify-center rounded-full bg-brand text-brand-foreground"
+            >
+              <Camera className="h-4 w-4" />
+            </button>
+          </div>
+          <p className="mt-3 font-display text-base font-semibold">Mason Reyes</p>
+          <p className="text-xs text-ink-soft">FLO+ member since 2024</p>
+        </div>
+
+        <div className="mt-7 space-y-4">
+          <Field label="Full name" placeholder="Mason Reyes" />
+          <Field label="Email" placeholder="mason@flohockey.com" type="email" />
+          <Field label="Phone" placeholder="+1 (305) 555-0142" type="tel" />
+          <Field label="Date of birth" placeholder="04 / 12 / 1998" />
+          <div>
+            <p className="mb-2 font-display text-[13px] font-medium text-ink">Preferred position</p>
+            <div className="flex flex-wrap gap-2">
+              {["Forward", "Defense", "Goalie"].map((pos, i) => (
+                <span
+                  key={pos}
+                  className={`rounded-full px-4 py-2 font-display text-[13px] font-medium ${
+                    i === 0 ? "bg-brand text-brand-foreground" : "bg-surface text-ink-soft"
+                  }`}
+                >
+                  {pos}
+                </span>
+              ))}
+            </div>
+          </div>
+          <Btn full onClick={back}>
+            Save changes
+          </Btn>
+          <Btn full variant="ghost" onClick={back}>
+            Cancel
+          </Btn>
+        </div>
       </div>
     </Screen>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Apple, Chrome, Lock } from "lucide-react";
-import logo from "@/assets/flo-hockey-logo.jpg.asset.json";
+import logo from "@/assets/flo-logo.png.asset.json";
 import { img } from "@/lib/flo-data";
 import { useFlo } from "@/lib/flo-app";
 import { Btn, Field, Header, Screen } from "./ui";
@@ -21,13 +21,13 @@ export function SplashScreen() {
     };
   }, [go, frozen]);
   return (
-    <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-ink px-10">
+    <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-night px-10">
       <img src={logo.url} alt="Flo Hockey" className="h-40 w-40 rounded-full object-cover" />
-      <h1 className="mt-8 font-display text-3xl font-extrabold text-background">FLO HOCKEY</h1>
+      <h1 className="mt-8 font-display text-3xl font-extrabold text-white">FLO HOCKEY</h1>
       <p className="mt-2 font-display text-[13px] font-medium tracking-[0.35em] text-brand">
         SPEED. STYLE. FLOW.
       </p>
-      <div className="absolute bottom-24 h-1 w-40 overflow-hidden rounded-full bg-background/20">
+      <div className="absolute bottom-24 h-1 w-40 overflow-hidden rounded-full bg-white/20">
         <div className="h-full rounded-full bg-brand transition-all" style={{ width: `${p}%` }} />
       </div>
     </div>
@@ -37,7 +37,7 @@ export function SplashScreen() {
 export function WelcomeScreen() {
   const { go } = useFlo();
   return (
-    <div className="screen-fade relative h-full bg-ink">
+    <div className="screen-fade relative h-full bg-night">
       <img
         src={img.welcome}
         alt="Young hockey player at a Florida sunset"
@@ -103,7 +103,10 @@ export function LoginScreen() {
           <Field label="Email" placeholder="you@flohockey.com" type="email" />
           <Field label="Password" placeholder="••••••••" type="password" />
           <div className="flex justify-end">
-            <button className="text-[13px] font-medium text-brand">Forgot password?</button>
+            <button onClick={() => go("forgot")} className="text-[13px] font-medium text-brand">
+              Forgot password?
+            </button>
+
           </div>
           <Btn full onClick={() => go("home")}>
             Log in
@@ -154,6 +157,101 @@ export function SignupScreen() {
               Log in
             </button>
           </p>
+        </div>
+      </div>
+    </Screen>
+  );
+}
+
+export function ForgotScreen() {
+  const { go } = useFlo();
+  return (
+    <Screen nav={false}>
+      <Header />
+      <div className="px-6 pt-2">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/12">
+          <Lock className="h-6 w-6 text-brand" />
+        </span>
+        <h1 className="mt-5 text-[30px] font-extrabold leading-tight">Forgot password?</h1>
+        <p className="mt-1.5 text-sm text-ink-soft">
+          Enter the email on your account and we'll send a 4-digit reset code.
+        </p>
+        <div className="mt-7 space-y-4">
+          <Field label="Email" placeholder="you@flohockey.com" type="email" />
+          <Btn full onClick={() => go("verify")}>
+            Send reset code
+          </Btn>
+          <p className="pt-1 text-center text-sm text-ink-soft">
+            Remembered it?{" "}
+            <button onClick={() => go("login")} className="font-semibold text-brand">
+              Back to log in
+            </button>
+          </p>
+        </div>
+      </div>
+    </Screen>
+  );
+}
+
+export function VerifyScreen() {
+  const { go } = useFlo();
+  const code = ["4", "8", "2", ""];
+  return (
+    <Screen nav={false}>
+      <Header />
+      <div className="px-6 pt-2">
+        <h1 className="text-[30px] font-extrabold leading-tight">Check your email</h1>
+        <p className="mt-1.5 text-sm text-ink-soft">
+          We sent a 4-digit code to mason@flohockey.com
+        </p>
+        <div className="mt-8 flex gap-3">
+          {code.map((c, i) => (
+            <div
+              key={i}
+              className={`flex h-16 flex-1 items-center justify-center rounded-2xl border font-display text-2xl font-bold ${
+                c ? "border-brand bg-brand/8 text-ink" : "border-border bg-surface text-ink-soft"
+              }`}
+            >
+              {c || "–"}
+            </div>
+          ))}
+        </div>
+        <Btn full className="mt-7" onClick={() => go("reset")}>
+          Verify code
+        </Btn>
+        <p className="mt-4 text-center text-sm text-ink-soft">
+          Didn't get it? <button className="font-semibold text-brand">Resend in 0:42</button>
+        </p>
+      </div>
+    </Screen>
+  );
+}
+
+export function ResetScreen() {
+  const { go } = useFlo();
+  return (
+    <Screen nav={false}>
+      <Header />
+      <div className="px-6 pt-2">
+        <h1 className="text-[30px] font-extrabold leading-tight">Set a new password</h1>
+        <p className="mt-1.5 text-sm text-ink-soft">
+          Use at least 8 characters with a number and a symbol.
+        </p>
+        <div className="mt-7 space-y-4">
+          <Field label="New password" placeholder="••••••••" type="password" />
+          <Field label="Confirm password" placeholder="••••••••" type="password" />
+          <div className="rounded-2xl bg-surface p-4 text-xs text-ink-soft">
+            <p className="font-display text-[13px] font-semibold text-ink">Password strength</p>
+            <div className="mt-2 flex gap-1.5">
+              <span className="h-1.5 flex-1 rounded-full bg-brand" />
+              <span className="h-1.5 flex-1 rounded-full bg-brand" />
+              <span className="h-1.5 flex-1 rounded-full bg-border" />
+            </div>
+            <p className="mt-2">Good — add a symbol to make it strong.</p>
+          </div>
+          <Btn full onClick={() => go("login")}>
+            Update password
+          </Btn>
         </div>
       </div>
     </Screen>

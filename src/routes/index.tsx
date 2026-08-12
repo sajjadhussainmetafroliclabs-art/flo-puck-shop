@@ -1,4 +1,6 @@
+import { Moon, Sun } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useTheme } from "@/lib/use-theme";
 import { FloApp } from "@/components/flo/FloApp";
 import type { Params, ScreenName } from "@/lib/flo-app";
 
@@ -34,6 +36,9 @@ const sections: { title: string; frames: Frame[] }[] = [
       { screen: "welcome", label: "Welcome" },
       { screen: "login", label: "Log in" },
       { screen: "signup", label: "Sign up" },
+      { screen: "forgot", label: "Forgot password" },
+      { screen: "verify", label: "Verify code" },
+      { screen: "reset", label: "New password" },
     ],
   },
   {
@@ -73,6 +78,7 @@ const sections: { title: string; frames: Frame[] }[] = [
     title: "Profile",
     frames: [
       { screen: "profile", label: "Profile" },
+      { screen: "editProfile", label: "Edit profile" },
       { screen: "orders", label: "Orders" },
       { screen: "addresses", label: "Addresses" },
       { screen: "payments", label: "Payment methods" },
@@ -106,9 +112,11 @@ function Phone({ frame }: { frame: Frame }) {
 }
 
 function Index() {
+  const { dark, toggle } = useTheme();
   return (
     <main className="min-h-screen w-full bg-surface px-5 py-12 sm:px-10">
-      <header className="mx-auto max-w-6xl">
+      <header className="mx-auto flex max-w-6xl items-start justify-between gap-6">
+        <div>
         <p className="font-display text-xs font-semibold tracking-[0.3em] text-brand">
           FLO HOCKEY — UI OVERVIEW
         </p>
@@ -117,6 +125,14 @@ function Index() {
           Every screen of the mobile store, live and interactive. Tap inside any frame to explore
           that flow.
         </p>
+        </div>
+        <button
+          onClick={toggle}
+          className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 font-display text-sm font-semibold text-ink"
+        >
+          {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          {dark ? "Light mode" : "Dark mode"}
+        </button>
       </header>
 
       <div className="mx-auto mt-12 max-w-6xl space-y-16">

@@ -28,6 +28,7 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-night: oklch(0.16 0 0);
   --shadow-soft: 0 2px 10px oklch(0 0 0 / 0.05);
   --shadow-card: 0 8px 30px oklch(0 0 0 / 0.08);
   --shadow-float: 0 18px 50px oklch(0 0 0 / 0.14);
@@ -119,9 +120,17 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
+  --brand: oklch(0.78 0.235 141.5);
+  --brand-foreground: oklch(0.14 0 0);
+  --flame: oklch(0.72 0.19 45);
+  --flame-foreground: oklch(0.14 0 0);
+  --surface: oklch(0.235 0.01 260);
+  --ink: oklch(0.97 0.003 250);
+  --ink-soft: oklch(0.72 0.02 258);
+  --background: oklch(0.17 0.012 262);
+  --foreground: oklch(0.97 0.003 250);
   --card: oklch(0.208 0.042 265.755);
+
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
