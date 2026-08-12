@@ -21,13 +21,13 @@ export function SplashScreen() {
     };
   }, [go, frozen]);
   return (
-    <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-ink px-10">
+    <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-night px-10">
       <img src={logo.url} alt="Flo Hockey" className="h-40 w-40 rounded-full object-cover" />
-      <h1 className="mt-8 font-display text-3xl font-extrabold text-background">FLO HOCKEY</h1>
+      <h1 className="mt-8 font-display text-3xl font-extrabold text-white">FLO HOCKEY</h1>
       <p className="mt-2 font-display text-[13px] font-medium tracking-[0.35em] text-brand">
         SPEED. STYLE. FLOW.
       </p>
-      <div className="absolute bottom-24 h-1 w-40 overflow-hidden rounded-full bg-background/20">
+      <div className="absolute bottom-24 h-1 w-40 overflow-hidden rounded-full bg-white/20">
         <div className="h-full rounded-full bg-brand transition-all" style={{ width: `${p}%` }} />
       </div>
     </div>
@@ -37,7 +37,7 @@ export function SplashScreen() {
 export function WelcomeScreen() {
   const { go } = useFlo();
   return (
-    <div className="screen-fade relative h-full bg-ink">
+    <div className="screen-fade relative h-full bg-night">
       <img
         src={img.welcome}
         alt="Young hockey player at a Florida sunset"

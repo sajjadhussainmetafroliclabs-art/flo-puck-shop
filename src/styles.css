@@ -28,6 +28,7 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-night: oklch(0.16 0 0);
   --shadow-soft: 0 2px 10px oklch(0 0 0 / 0.05);
   --shadow-card: 0 8px 30px oklch(0 0 0 / 0.08);
   --shadow-float: 0 18px 50px oklch(0 0 0 / 0.14);
