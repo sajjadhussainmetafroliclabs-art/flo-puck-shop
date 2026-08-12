@@ -1,6 +1,14 @@
 import { FloProvider, useFlo, type Params, type ScreenName } from "@/lib/flo-app";
 import { BottomNav } from "./ui";
-import { LoginScreen, SignupScreen, SplashScreen, WelcomeScreen } from "./screens-onboarding";
+import {
+  ForgotScreen,
+  LoginScreen,
+  ResetScreen,
+  SignupScreen,
+  SplashScreen,
+  VerifyScreen,
+  WelcomeScreen,
+} from "./screens-onboarding";
 import {
   CategoriesScreen,
   CategoryScreen,
@@ -23,6 +31,7 @@ import {
 } from "./screens-checkout";
 import {
   AddressesScreen,
+  EditProfileScreen,
   NotificationsScreen,
   OrdersScreen,
   PaymentsScreen,
@@ -35,6 +44,10 @@ const NO_NAV = [
   "welcome",
   "login",
   "signup",
+  "forgot",
+  "verify",
+  "reset",
+  "editProfile",
   "gallery",
   "address",
   "delivery",
@@ -51,6 +64,10 @@ function Router() {
     welcome: <WelcomeScreen />,
     login: <LoginScreen />,
     signup: <SignupScreen />,
+    forgot: <ForgotScreen />,
+    verify: <VerifyScreen />,
+    reset: <ResetScreen />,
+    editProfile: <EditProfileScreen />,
     home: <HomeScreen />,
     categories: <CategoriesScreen />,
     category: <CategoryScreen />,
