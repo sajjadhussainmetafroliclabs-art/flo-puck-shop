@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Bell, SlidersHorizontal, X, LayoutGrid, List, ArrowRight } from "lucide-react";
-import logo from "@/assets/flo-hockey-logo.jpg.asset.json";
+import logo from "@/assets/flo-logo.png.asset.json";
 import { brands, categories, img, money, products } from "@/lib/flo-data";
 import { filterProducts, useFlo } from "@/lib/flo-app";
 import {
@@ -23,7 +23,7 @@ export function HomeScreen() {
   return (
     <Screen>
       <div className="flex items-center gap-3 px-5 pt-4">
-        <img src={logo.url} alt="Flo Hockey" className="h-10 w-10 rounded-full object-cover" />
+        <img src={logo.url} alt="Flo Hockey" className="h-9 w-auto object-contain" />
         <div className="flex-1">
           <p className="text-[11px] text-ink-soft">Good morning, Mason</p>
           <p className="font-display text-[15px] font-semibold">Ready for the rink?</p>

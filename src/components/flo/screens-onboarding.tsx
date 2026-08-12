@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Apple, Chrome, Lock } from "lucide-react";
-import logo from "@/assets/flo-hockey-logo.jpg.asset.json";
+import logo from "@/assets/flo-logo.png.asset.json";
 import { img } from "@/lib/flo-data";
 import { useFlo } from "@/lib/flo-app";
 import { Btn, Field, Header, Screen } from "./ui";
