@@ -103,7 +103,10 @@ export function LoginScreen() {
           <Field label="Email" placeholder="you@flohockey.com" type="email" />
           <Field label="Password" placeholder="••••••••" type="password" />
           <div className="flex justify-end">
-            <button className="text-[13px] font-medium text-brand">Forgot password?</button>
+            <button onClick={() => go("forgot")} className="text-[13px] font-medium text-brand">
+              Forgot password?
+            </button>
+
           </div>
           <Btn full onClick={() => go("home")}>
             Log in
