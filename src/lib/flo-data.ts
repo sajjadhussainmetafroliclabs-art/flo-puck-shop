@@ -1,3 +1,4 @@
+import splashBg from "@/assets/splash-bg.jpg";
 import stick from "@/assets/p-stick.jpg";
 import skate from "@/assets/p-skate.jpg";
 import helmet from "@/assets/p-helmet.jpg";
@@ -8,7 +9,7 @@ import hero from "@/assets/hero-player.jpg";
 import promo from "@/assets/promo-ice.jpg";
 import welcome from "@/assets/welcome-florida.jpg";
 
-export const img = { stick, skate, helmet, gloves, jersey, training, hero, promo, welcome };
+export const img = { splashBg, stick, skate, helmet, gloves, jersey, training, hero, promo, welcome };
 
 export type Product = {
   id: string;
