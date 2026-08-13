@@ -55,6 +55,20 @@ const NO_NAV = [
   "review",
   "success",
   "product",
+  "categories",
+  "category",
+  "listing",
+  "search",
+  "results",
+  "sale",
+  "new",
+  "reviews",
+  "cart",
+  "orders",
+  "addresses",
+  "payments",
+  "notifications",
+  "settings",
 ];
 
 function Router() {
