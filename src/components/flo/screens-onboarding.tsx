@@ -61,7 +61,13 @@ export function WelcomeScreen() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/40" />
       <div className="relative flex h-full flex-col justify-between p-7 pb-10">
-        <img src={logo.url} alt="Flo Hockey" className="h-14 w-14 rounded-full object-cover" />
+        <div className="w-fit rounded-2xl bg-night/45 px-4 py-3 backdrop-blur-md ring-1 ring-white/15 shadow-xl">
+          <img
+            src={logo.url}
+            alt="Flo Hockey"
+            className="h-14 w-auto object-contain drop-shadow-[0_2px_12px_rgba(24,214,27,0.4)]"
+          />
+        </div>
         <div>
           <p className="font-display text-xs font-semibold tracking-[0.3em] text-brand">
             FLORIDA HOCKEY CULTURE
