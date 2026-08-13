@@ -21,13 +21,29 @@ export function SplashScreen() {
     };
   }, [go, frozen]);
   return (
-    <div className="screen-fade relative flex h-full flex-col items-center justify-center bg-night px-10">
-      <img src={logo.url} alt="Flo Hockey" className="h-40 w-40 rounded-full object-cover" />
-      <h1 className="mt-8 font-display text-3xl font-extrabold text-white">FLO HOCKEY</h1>
-      <p className="mt-2 font-display text-[13px] font-medium tracking-[0.35em] text-brand">
-        SPEED. STYLE. FLOW.
-      </p>
-      <div className="absolute bottom-24 h-1 w-40 overflow-hidden rounded-full bg-white/20">
+    <div className="screen-fade relative flex h-full flex-col items-center justify-center overflow-hidden bg-night px-8">
+      <img
+        src={img.splashBg}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-night/70 via-night/50 to-night/85" />
+      <div className="relative z-10 flex flex-col items-center text-center">
+        <div className="rounded-3xl bg-night/40 p-4 backdrop-blur-md ring-1 ring-white/15 shadow-2xl">
+          <img
+            src={logo.url}
+            alt="Flo Hockey"
+            className="h-32 w-32 object-contain drop-shadow-[0_4px_24px_rgba(24,214,27,0.45)]"
+          />
+        </div>
+        <h1 className="mt-8 font-display text-4xl font-extrabold tracking-tight text-white drop-shadow-lg">
+          FLO HOCKEY
+        </h1>
+        <p className="mt-2 font-display text-[13px] font-semibold tracking-[0.35em] text-brand">
+          SPEED. STYLE. FLOW.
+        </p>
+      </div>
+      <div className="absolute bottom-24 z-10 h-1 w-44 overflow-hidden rounded-full bg-white/20">
         <div className="h-full rounded-full bg-brand transition-all" style={{ width: `${p}%` }} />
       </div>
     </div>
