@@ -114,17 +114,19 @@ function Phone({ frame }: { frame: Frame }) {
 function Index() {
   const { dark, toggle } = useTheme();
   return (
-    <main className="min-h-screen w-full bg-surface px-5 py-12 sm:px-10">
-      <header className="mx-auto flex max-w-6xl items-start justify-between gap-6">
+    <main className="flex min-h-screen w-full flex-col items-center bg-surface px-5 py-10">
+      <header className="flex w-full max-w-3xl items-start justify-between gap-6">
         <div>
-        <p className="font-display text-xs font-semibold tracking-[0.3em] text-brand">
-          FLO HOCKEY — UI OVERVIEW
-        </p>
-        <h1 className="mt-3 font-display text-4xl font-extrabold text-ink">All screens, one page</h1>
-        <p className="mt-2 max-w-xl text-sm text-ink-soft">
-          Every screen of the mobile store, live and interactive. Tap inside any frame to explore
-          that flow.
-        </p>
+          <p className="font-display text-xs font-semibold tracking-[0.3em] text-brand">
+            FLO HOCKEY
+          </p>
+          <h1 className="mt-3 font-display text-3xl font-extrabold text-ink">
+            All screens, one phone
+          </h1>
+          <p className="mt-2 max-w-md text-sm text-ink-soft">
+            The complete app running live in a single device frame — tap through onboarding,
+            shopping, checkout and profile.
+          </p>
         </div>
         <button
           onClick={toggle}
@@ -135,18 +137,20 @@ function Index() {
         </button>
       </header>
 
-      <div className="mx-auto mt-12 max-w-6xl space-y-16">
-        {sections.map((s) => (
-          <section key={s.title}>
-            <h2 className="font-display text-xl font-bold text-ink">{s.title}</h2>
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-10">
-              {s.frames.map((f) => (
-                <Phone key={f.screen + (f.label ?? "")} frame={f} />
-              ))}
-            </div>
-          </section>
-        ))}
+      <div className="mt-10 flex flex-col items-center gap-4">
+        <div
+          className="relative overflow-hidden rounded-[46px] bg-background shadow-float ring-[9px] ring-ink/90"
+          style={{ width: 387, height: 839 }}
+        >
+          <div
+            className="absolute left-0 top-0 origin-top-left"
+            style={{ width: 430, height: 932, transform: "scale(0.9)" }}
+          >
+            <FloApp />
+          </div>
+        </div>
       </div>
     </main>
   );
 }
+
