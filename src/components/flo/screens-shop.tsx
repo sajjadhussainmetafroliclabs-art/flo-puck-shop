@@ -63,7 +63,7 @@ export function HomeScreen() {
               Sunset Series Drop
             </h2>
             <p className="mt-1 text-xs text-white/70">Up to 30% off select gear</p>
-            <span className="mt-4 flex w-fit items-center gap-1.5 rounded-full bg-white px-4 py-2 font-display text-[13px] font-semibold text-ink">
+            <span className="mt-4 flex w-fit items-center gap-1.5 rounded-full bg-white px-4 py-2 font-display text-[13px] font-semibold text-night">
               Shop now <ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
